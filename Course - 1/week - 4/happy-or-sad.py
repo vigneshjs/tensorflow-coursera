@@ -9,12 +9,6 @@ from os import path, getcwd, chdir
 # DO NOT CHANGE THE LINE BELOW. If you are developing in a local
 # environment, then grab happy-or-sad.zip from the Coursera Jupyter Notebook
 # and place it inside a local folder and edit the path to that location
-path = f"{getcwd()}/../tmp2/happy-or-sad.zip"
-
-zip_ref = zipfile.ZipFile(path, 'r')
-zip_ref.extractall("/tmp/h-or-s")
-zip_ref.close()
-
 
 class myCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs={}):
@@ -48,7 +42,7 @@ train_datagen = ImageDataGenerator(rescale=1/255)
 
 # Please use a target_size of 150 X 150.
 train_generator = train_datagen.flow_from_directory(
-    '/tmp/h-or-s',
+    'Datasets/happy-or-sad',
     target_size=(150, 150),
     batch_size=80,
     class_mode='binary'
