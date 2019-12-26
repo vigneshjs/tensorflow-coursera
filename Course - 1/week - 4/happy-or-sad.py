@@ -5,10 +5,13 @@ import os
 import zipfile
 from os import path, getcwd, chdir
 
+base_dir = '/home/user/learning/tensorflow-coursera/Datasets'
+training_data_path = os.path.join(base_dir, 'happy-or-sad')
 
 # DO NOT CHANGE THE LINE BELOW. If you are developing in a local
 # environment, then grab happy-or-sad.zip from the Coursera Jupyter Notebook
 # and place it inside a local folder and edit the path to that location
+
 
 class myCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs={}):
@@ -42,7 +45,7 @@ train_datagen = ImageDataGenerator(rescale=1/255)
 
 # Please use a target_size of 150 X 150.
 train_generator = train_datagen.flow_from_directory(
-    'Datasets/happy-or-sad',
+    training_data_path,
     target_size=(150, 150),
     batch_size=80,
     class_mode='binary'
