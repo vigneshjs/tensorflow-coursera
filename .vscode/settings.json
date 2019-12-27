@@ -1,3 +1,22 @@
 {
-  "python.pythonPath": "/home/user/learning/machine-learning-env/bin/python"
+  "python.formatting.provider": "autopep8",
+  "python.linting.pycodestyleEnabled": false,
+  "python.linting.pydocstyleArgs": [
+    "--ignore=D400",
+    "--ignore=D4",
+    "--max-line-length=90"
+  ],
+  "python.linting.pycodestyleArgs": ["--ignore=E303", "--max-line-length=90"],
+  "python.formatting.autopep8Args": ["--max-line-length=90"],
+  "editor.rulers": [79, 90],
+  "python.formatting.autopep8Path": "autopep8",
+  "python.linting.pylintEnabled": false,
+  "python.linting.pydocstyleEnabled": false,
+  "python.pythonPath": "/home/vignesh/Learning/machine-learning-env/bin/python3.6",
+  "editor.formatOnSave": true,
+  "python.linting.pylintPath": "/home/vignesh/Learning/machine-learning-env/bin/pylint",
+  "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
+  "python.linting.enabled": true,
+  "terminal.integrated.fontFamily": "Menlo for Powerline",
+  "minify.minifyExistingOnSave": true
 }
