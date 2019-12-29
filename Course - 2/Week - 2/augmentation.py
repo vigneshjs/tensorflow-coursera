@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from tensorflow_core.python.keras.api import keras
 import os
 
-base_dir = '/home/user/learning/tensorflow-coursera/Datasets'
+base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'Datasets')
 training_dir = os.path.join(base_dir, 'horse-or-human')
 validation_dir = os.path.join(base_dir, 'validation-horse-or-human')
 

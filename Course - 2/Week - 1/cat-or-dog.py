@@ -3,7 +3,7 @@ from tensorflow_core.python.keras.api import keras
 import os
 
 
-base_dir = '/home/user/learning/tensorflow-coursera/Datasets/cats_and_dogs_filtered'
+base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'Datasets/cats_and_dogs_filtered')
 train_data_path = os.path.join(base_dir, 'train')
 validation_data_path = os.path.join(base_dir, 'validation')
 
