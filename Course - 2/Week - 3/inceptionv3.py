@@ -1,11 +1,14 @@
 import matplotlib.pyplot as plt
 import os
+import tensorflow as tf
 from tensorflow_core.python.keras.api.keras import layers
 from tensorflow_core.python.keras.api import keras
 from tensorflow_core.python.keras.api.keras import Model
 from tensorflow_core.python.keras.api.keras.applications.inception_v3 import InceptionV3
 
-local_weights_file = '/home/user/learning/tensorflow-coursera/Pre-Trained-Models/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5'
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+local_weights_file = os.path.join(BASE_DIR ,'Pre-Trained-Models/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5')
 
 pre_trained_model = InceptionV3(
     input_shape=(150, 150, 3),
@@ -32,10 +35,10 @@ model = Model(pre_trained_model.input, x)
 model.compile(
     loss='binary_crossentropy',
     optimizer=keras.optimizers.RMSprop(lr=0.0001),
-    metrics=['accuracy']
+    metrics=['acc']
 )
 
-base_dir = '/home/user/learning/tensorflow-coursera/Datasets'
+base_dir = os.path.join(BASE_DIR ,'Datasets')
 training_dir = os.path.join(base_dir, 'horse-or-human')
 validation_dir = os.path.join(base_dir, 'validation-horse-or-human')
 
@@ -52,7 +55,7 @@ training_datagen = keras.preprocessing.image.ImageDataGenerator(
 
 training_generator = training_datagen.flow_from_directory(
     training_dir,
-    batch_size=128,
+    batch_size=5,
     target_size=(150, 150),
     class_mode='binary'
 )
@@ -71,7 +74,7 @@ validation_datagen = keras.preprocessing.image.ImageDataGenerator(
 validation_generator = validation_datagen.flow_from_directory(
     validation_dir,
     target_size=(150, 150),
-    batch_size=32,
+    batch_size=4,
     class_mode='binary'
 )
 
@@ -79,11 +82,11 @@ history = model.fit_generator(
     training_generator,
     validation_data=validation_generator,
     steps_per_epoch=100,
-    epochs=1,
-    validation_steps=50,
-    verbose=2)
+    epochs=100,
+    validation_steps=32,
+    verbose=1)
 
-acc = history.history['accuracy']
+acc = history.history['acc']
 val_acc = history.history['val_acc']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
