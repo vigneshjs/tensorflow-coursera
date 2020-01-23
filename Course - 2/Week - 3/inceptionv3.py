@@ -6,6 +6,7 @@ from tensorflow_core.python.keras.api import keras
 from tensorflow_core.python.keras.api.keras import Model
 from tensorflow_core.python.keras.api.keras.applications.inception_v3 import InceptionV3
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 local_weights_file = os.path.join(BASE_DIR ,'Pre-Trained-Models/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5')
